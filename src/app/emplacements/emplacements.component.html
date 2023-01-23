@@ -1,0 +1,111 @@
+
+<h3>Liste des emplacements</h3>
+
+<section>
+  
+  <div class="example-button-row">
+    <button mat-raised-button color="primary" 
+        [routerLink]="['newEmplacement']" routerLinkActive="active" 
+        [routerLinkActiveOptions]="{exact: true}">
+        Ajouter un nouvel emplacement
+    </button>
+  </div>
+</section>
+
+<!-- <div class="row my-4">
+    <div class="col-md-6 mx-auto">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Allée</th>
+                <th scope="col">Niveau horizontal</th>
+                <th scope="col">Niveau vertical</th>
+                <th scope="col">Dépôt</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let e of emplacementsItems">
+                <td>{{e.allee}}</td>
+                <td>{{e.nivHoriz}}</td>
+                <td>{{e.nivVerti}}</td>
+                <td>{{e.depotName}}</td>
+                <td>
+                    <button class="btn btn-warning btn-sm">
+                        <i class="fa fa-pencil"></i>
+                    </button>
+                </td>
+                <td>
+                    <button class="btn btn-dark btn-sm">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</div> -->
+
+<table  mat-table [dataSource]="dataSrc" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+    
+    <!-- Libelle Column -->
+    <ng-container matColumnDef="allee">
+      <th mat-header-cell *matHeaderCellDef> Allée </th>
+      <td mat-cell *matCellDef="let element"> {{element.allee}} </td>
+    </ng-container>
+
+  
+    <!-- Niveau horizontal Column -->
+    <ng-container matColumnDef="nivHoriz">
+      <th mat-header-cell *matHeaderCellDef> Niveau horizontal </th>
+      <td mat-cell *matCellDef="let element"> {{element.nivHoriz}} </td>
+    </ng-container>
+
+    <!-- Niveau vertical Column -->
+    <ng-container matColumnDef="nivVerti">
+        <th mat-header-cell *matHeaderCellDef> Niveau vertical </th>
+        <td mat-cell *matCellDef="let element"> {{element.nivVerti}} </td>
+    </ng-container>
+
+    <!-- Dépôt Column -->
+    <ng-container matColumnDef="depotName">
+        <th mat-header-cell *matHeaderCellDef> Dépôt </th>
+        <td mat-cell *matCellDef="let element"> {{element.depotName}} </td>
+    </ng-container>
+
+    <!-- Edit Column -->
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef> Modifier </th>
+      <td mat-cell *matCellDef="let element"> 
+        <button (click)="editEmplacement(element.id)" 
+            mat-icon-button >
+          <i class="fa fa-pencil"></i>
+        </button>
+      </td>
+    </ng-container>
+
+    <!-- Delete Column -->
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef> Supprimer </th>
+      <td mat-cell *matCellDef="let element"> 
+        <button (click)="deleteEmplacement(element.id)" 
+            mat-icon-button color="warn">
+          <i class="fa fa-trash"></i>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+  </table>
+  
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons
+                 aria-label="Select page of periodic elements">
+  </mat-paginator>
+  

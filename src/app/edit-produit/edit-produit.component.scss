@@ -1,0 +1,27 @@
+
+mat-card{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+mat-card-header{
+    margin-bottom: 20px;
+    align-self: center;
+}
+
+.full-width{
+    width: 100%;
+}
+
+.top-padding{
+    padding-top: 3px;
+}
+
+.margin-left mat-radio-button:not(:first-child){
+    margin-left:10px;
+}
+
+.form-container{
+    margin: 100px;
+}
+    
