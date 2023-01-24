@@ -10,8 +10,12 @@ import { Depot } from '../models/depotModel/depot';
 import { DepotService } from '../services/depot.service';
 
 const ELEMENT_DATA: EmplacementItem[] = [
-  {allee: 'A', nivHoriz: '1', nivVerti: '1', depotName: 'Depot 1'},
-  {allee: 'B', nivHoriz: '2', nivVerti: '2', depotName: 'Depot 1'},
+  {allee: 'A', nivHoriz: '1', nivVerti: '1', depotName: 'Dépôt Hassan II'},
+  {allee: 'A', nivHoriz: '2', nivVerti: '2', depotName: 'Dépôt Hassan II'},
+  {allee: 'B', nivHoriz: '1', nivVerti: '2', depotName: 'Dépôt Ibn Sina'},
+  {allee: 'B', nivHoriz: '2', nivVerti: '2', depotName: 'Dépôt Ibn Sina'},
+  {allee: 'C', nivHoriz: '3', nivVerti: '2', depotName: 'Dépôt Ibnou Essali'},
+  {allee: 'D', nivHoriz: '4', nivVerti: '3', depotName: 'Dépôt El Karia'},
 ];
 
 @Component({
@@ -25,7 +29,7 @@ export class EmplacementsComponent {
   emplacementsItems: EmplacementItem[] = []; 
 
   //dataSource = new MatTableDataSource<EmplacementItem>;
-  dataSrc = new MatTableDataSource<EmplacementItem>(this.emplacementsItems);
+  dataSrc = new MatTableDataSource<EmplacementItem>(ELEMENT_DATA);
   emplacementItem! : EmplacementItem;
 
   depot!: Depot;
@@ -36,7 +40,6 @@ export class EmplacementsComponent {
 
   ngOnInit() {
     this.fetchEmplacements()
-    this.dataSrc = new MatTableDataSource<EmplacementItem>(this.emplacementsItems);
     /*this.dataSource = new MatTableDataSource<EmplacementItem>(this.emplacementsItems)
     this.dataSource.data = this.emplacementsItems
     this.dataSource.paginator = this.paginator;*/
